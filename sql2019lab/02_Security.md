@@ -1,12 +1,12 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: SQL Server 2019 Lab CTP 3.1
+# Workshop: SQL Server 2019 Lab (RC)
 
 #### <i>A Microsoft workshop from the SQL Server team</i>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/textbubble.png"> <h2>SQL Server 2019 Security</h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"><b>     SQL Server 2019 Security</b></h2>
 
 SQL Server 2019 has new security enhancements including:
 
@@ -14,6 +14,7 @@ SQL Server 2019 has new security enhancements including:
 - Data Classification and Auditing
 - Transparent Data Encryption (TDE) Suspend and Resume
 - Improved Certificate Management
+- Feature Restrictions
 
 You can read more details about all of these enhancements at https://docs.microsoft.com/en-us/sql/sql-server/what-s-new-in-sql-server-ver15?view=sqlallproducts-allversions.
 
@@ -28,15 +29,15 @@ You'll cover the following topics in this Module:
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/pencil2.png"><a name="2-0">2.0 Data Classification</a></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="2-0"><b>     2.0 Data Classification</a></b></h2>
 
 In this module you will learn about the Data Classification capabilities in SQL Server 2019.
 
-<p><b><a name="challenge">The Challenge</a></b></p>
+<h3><b><a name="challenge">The Challenge</a></b></h3>
 
 Many organization face the challenge of classifying their data and auditing access to data that is classified. Regulations such as General Data Protection Regulation (GDPR) have requirements for business to be able to easily find and report on data access. Having the ability to classify data at the column level with SQL Server can assist to meet these type of regulations. Furthermore, auditing of data that is marked as classified can also assist with regulations and compliance from government agencies or industry standards.
 
-<p><b><a name="solution">The Solution</a></b></p>
+<h3><b><a name="solution">The Solution</a></b></h3>
 
 In SQL Server 2017, SQL Server Management Studio (SSMS) was enhanced to include the ability to classify data based on *labels* and *types* you could associate with columns in a table. This solution was built into the SSMS tool.
 
@@ -52,9 +53,9 @@ Now classification information is stored directly with columns in metadata in sy
 
 **information_type** - This represents the type of data that is being classified. This can be any string you choose. An example of an information_type would be *Financial*
 
-The added benefit of built-in classification is that now auditing of data classification is included. SSMS starting with version 18.1 has been enhanced to take advantage of this new T-SQL feature.
+The added benefit of built-in classification is that now auditing of data classification is included. SSMS starting with version 18 (you should use 18.2 or greater) has been enhanced to take advantage of this new T-SQL feature.
 
-**NOTE**: *The use of data classification and auditing with SQL Server does not imply an organization has met requirements like GDPR. SQL Server is providing some of the capabilities needed by organizations to meet certain regulations and compliance standards. It is up to a business or organization to use these tools to meet their requirements or regulations.*
+>**NOTE**: *The use of data classification and auditing with SQL Server does not imply an organization has met requirements like GDPR. SQL Server is providing some of the capabilities needed by organizations to meet certain regulations and compliance standards. It is up to a business or organization to use these tools to meet their requirements or regulations.*
 
 Data Classification and Auditing is a feature that exists for both SQL Server 2019 and Azure SQL Database. You can read the documentation for data discovery and classification for SQL Server, Azure SQL Database, and Azure SQL Data Warehouse at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-data-discovery-and-classification.
 
@@ -64,17 +65,17 @@ Proceed to the Activity to learn an example of how to use Data Classification wi
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/point1.png"><b><a name="activityiqp">Activity: Data Classification</a></b></p>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activitydataclassification">     Activity: Data Classification</a></b></h2>
 
 In this activity, you will learn how to use SQL Server Management Studio (SSMS) and T-SQL to classify columns of tables in a database. You will use the **WideWorldImporters** sample database to classify specific columns in tables of that database.
 
-**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 2.0 and run through all the steps again.*
+>**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 2.0 and run through all the steps again.*
 
-<p><b><a name="activitysteps">Activity Steps</a></b></p>
+<h3><b><a name="activitysteps">Activity Steps</a></b></h3>
 
 Follow these steps to classify certain columns in the WideWorldImporters database using SSMS and T-SQL. All scripts for this activity can be found in the **sql2019lab\02_Security\dataclassification** folder.
 
-**NOTE**: *SSMS 18.1 has a bug where data classification through the tools has an issue if the database compatibility level is NOT 150. Therefore, this activity includes instructions to change the dbcompat of WideWorldImporters to 150 (and revert it back when done). SSMS 18.2 is scheduled to have this problem fixed and this lab will be modified when that is verified.*
+>**NOTE**: *SSMS 18.1 has a bug where data classification through the tools has an issue if the database compatibility level is NOT 150. Therefore, you must have SSMS 18.2 (or greater) to go through this activity or set the dbcompat of WideWorldImporters to 150 if using a version < SSMS 18.2.*
 
 **STEP 1: Restore the WideWorldImporters backup.**
 
@@ -87,26 +88,25 @@ Execute the T-SQL script **restorewwi.sql** as found in the **sql2019lab\02_Secu
 Open up the script **setup_classification.sql** in SQL Server Management Studio (SSMS) and execute each step in the script or copy and paste these T-SQL commands to execute them
 
 ```sql
--- Step 1: Change WideWorldImporters to dbcompat = 150
--- TODO: Remove this after bug in SSMS fixed
-ALTER DATABASE WideWorldImporters SET COMPATIBILITY_LEVEL = 150
-GO
-
--- Step 2: In case you have run these demos before drop existing classifications
+-- Step 1: In case you have run these demos before drop existing classifications
 USE WideWorldImporters
 GO
 IF EXISTS (SELECT * FROM sys.sensitivity_classifications sc WHERE object_id('[Application].[PaymentMethods]') = sc.major_id)
+BEGIN
 	DROP SENSITIVITY CLASSIFICATION FROM [Application].[PaymentMethods].[PaymentMethodName]
+END
 GO
 IF EXISTS (SELECT * FROM sys.sensitivity_classifications sc WHERE object_id('[Application].[People]') = sc.major_id)
+BEGIN
 	DROP SENSITIVITY CLASSIFICATION FROM [Application].[People].[FullName]
 	DROP SENSITIVITY CLASSIFICATION FROM [Application].[People].[EmailAddress]
+END
 GO
 ```
 
 **STEP 3: Add classifications using the wizard in SSMS**
 
-**NOTE**: *SSMS still supports using Data Discover and Classification against older versions of SQL Server but will use the older technique built into the tool. Auditing will not be available for these scenarios.*
+>**NOTE**: *SSMS still supports using Data Discover and Classification against older versions of SQL Server but will use the older technique built into the tool. Auditing will not be available for these scenarios.*
 
 - Launch SSMS and select the Data Discovery and Classification option as a Task from WideWorldImporters in Object Explorer
 
@@ -204,7 +204,7 @@ Your results from the catalog view query should look like the following
 
 Notice the results have columns for information_type_id and label_id. These are GUID values that you can use instead of just string values. Your organization's data catalog system may require a unique ID for tracking classification metadata. Remember the NEWID() T-SQL function can be used to generate unique GUID values. The SSMS tool generates information_type_id and label_id values.
 
-<p><b><a name="activitysummary">Activity Summary</a></b></p>
+<h3><b><a name="activitysummary">Activity Summary</a></b></h3>
 
 In this activity you have learned now to use SSMS and T-SQL to create data classification label and information_type metadata for columns in a database. You have also learned how to use a report in SSMS to view classification metadata or system catalog views to see more details.
 
@@ -212,15 +212,15 @@ Armed with this knowledge, proceed to the next activity to learn how auditing is
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/pencil2.png"><a name="2-1">2.1 Auditing Data Classification</a></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="2-1">     2.1 Auditing Data Classification</a></b></h2>
 
 In this module you will learn how to use the SQL Server Audit capability that comes with SQL Server to audit who, what, and when attempted to view columns that are marked for classification.
 
-<p><b><a name="challenge">The Challenge</a></b></p>
+<h3><b><a name="challenge">The Challenge</a></b></h3>
 
 Classifying data is only the first step. Organizations need to track and audit details of users that attempt to view data marked with classification labels and types.
 
-<p><b><a name="solution">The Solution</a></b></p>
+<h3><b><a name="solution">The Solution</a></b></h3>
 
 SQL Server Audit is a feature of SQL Server to audit all types of access to the SQL Server instance and databases. You can read more about SQL Server Audit at https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-database-engine.
 
@@ -230,15 +230,15 @@ Let's use an activity to see how audit and classification work together.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/point1.png"><b><a name="aks">Activity: Using SQL Server Audit with Data Classification</a></b></p>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activityauditing">     Activity: Using SQL Server Audit with Data Classification</a></b></h2>
 
 In this activity you will learn how to audit users trying to view columns that were marked for data classification.
 
-**IMPORTANT**: *This activity assumes you have completed the steps in the Activity for Module 2.0.*
+>**IMPORTANT**: *This activity assumes you have completed the steps in the Activity for Module 2.0.*
 
-**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 2.0 and run through all the steps again.*
+>**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 2.0 and run through all the steps again.*
 
-<p><b><a name="activitysteps">Activity Steps</a></b></p>
+<h3><b><a name="activitysteps">Activity Steps</a></b></h3>
 
 Work through the following steps to enable SQL Server Audit and view auditing details when a user attempts to view columns that are associated with data classification.
 
@@ -247,8 +247,7 @@ All scripts can be found in the **sql2019lab\02_Security\dataclassification** di
 **STEP 1: Cleanup any previous examples**
 
 If you have never run this module activity on your SQL Server, you can skip this step. Otherwise, execute all the steps in the script **dropsqlaudit.sql**
-
-**Note**: *For Linux installations you will need to change the path when deleting past audits to /var/opt/mssql/data.*
+>**NOTE**: *For Linux installations you will need to change the path when deleting past audits to /var/opt/mssql/data.*
 
 ```sql
 -- Step 1: Disable the audits and drop them
@@ -279,7 +278,7 @@ GO
 
 Use the T-SQL script **setupsqlaudit.sql** to create and enable a new SQL Audit to track SELECT statements against the **[Application].[People]** table in the **WideWorldImporters** database
 
-**Note**: *For Linux installations change the path to /var/opt/mssql/data*
+>**NOTE**: *For Linux installations change the path to /var/opt/mssql/data*
 
 ```sql
 USE master
@@ -320,7 +319,7 @@ GO
 
 Use the script **checkaudit.sql** to see the if anything was audited.
 
-**Note**: *For Linux installations change the path to /var/opt/mssql/data*
+>**NOTE**: *For Linux installations change the path to /var/opt/mssql/data*
 
 ```sql
 -- Check the audit
@@ -341,6 +340,8 @@ Your results should look like the following:
 
 The first row is a record that the audit has started. The second row is an audit of the SELECT statement. The data_sensitivity_information column contains an XML record of the label and information_type values associated with columns that have data classifications. This includes the information to look up what columns are affected through the **sys.sensitivity_columns** catalog view.
 
+Keep the **checkaudit.sql** query tab available in SSMS as you will use it again over the next several steps.
+
 **STEP 5: SELECT one column from the table**
 
 Use the script **findpeopleonecolumn.sql** to query only one column that is marked for classification.
@@ -354,7 +355,7 @@ GO
 
 Use the script **checkaudit.sql** to see the if anything was audited.
 
-**Note**: *For Linux installations change the path to /var/opt/mssql/data*
+>**NOTE**: *For Linux installations change the path to /var/opt/mssql/data*
 
 ```sql
 -- Check the audit
@@ -389,7 +390,7 @@ This query should return no rows.
 
 Auditing for columns with data classification only apply to queries where columns are in the SELECT "list" of the query. Use the script **checkaudit.sql** to see the if anything was audited.
 
-**Note**: *For Linux installations change the path to /var/opt/mssql/data*
+>**NOTE**: *For Linux installations change the path to /var/opt/mssql/data*
 
 ```sql
 -- Check the audit
@@ -412,7 +413,7 @@ Notice in this results for the new row the data_sensitivity_information columns 
 
 Use the script **cleanup.sql** to disable and drop audits and delete classifications.
 
-**Note**: *For Linux installations change the path in the script to delete audit files to /var/opt/mssql/data*
+>**NOTE**: *For Linux installations change the path in the script to delete audit files to /var/opt/mssql/data*
 
 ```sql
 USE WideWorldImporters
@@ -452,7 +453,7 @@ IF EXISTS (SELECT * FROM sys.sensitivity_classifications sc WHERE object_id('[Ap
 GO
 ```
 
-<p><b><a name="activitysummary">Activity Summary</a></b></p>
+<h3><b><a name="activitysummary">Activity Summary</a></b></h3>
 
 In this activity you have seen how SQL Server Audit uses the new property **data_sensitivity_information** to track users who list columns associated with data classifications in a SELECT query. However, audit does not apply to all "usage" of a column that is marked for classification.
 
@@ -460,7 +461,7 @@ Proceed to the next module learn about new mission critical **availability** fea
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<p><img style="margin: 0px 15px 15px 0px;" src="./graphics/owl.png"><b>For Further Study</b></p>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/owl.png?raw=true"><b>     For Further Study</b></h2>
 
 - [SQL Server and Azure Data Discovery and classification](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-data-discovery-and-classification)
 - [ADD SENSITIVITY CLASSIFICATION](https://docs.microsoft.com/en-us/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
@@ -470,6 +471,6 @@ Proceed to the next module learn about new mission critical **availability** fea
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/geopin.png"><b >Next Steps</b></p>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/geopin.png?raw=true"><b>     Next Steps</b></h2>
 
 Next, Continue to <a href="03_Availability.md" target="_blank"><i>Availability</i></a>.

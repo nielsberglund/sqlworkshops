@@ -1,13 +1,13 @@
 
 ![](graphics/microsoftlogo.png)
 
-# Workshop: SQL Server 2019 Lab (CTP 3.1)
+# Lab: SQL Server 2019
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="graphics/textbubble.png"> <h2>About this Workshop</h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"><b>     About this Workshop</b></h2>
 
 Welcome to this Microsoft solutions workshop on *SQL Server 2019 Lab*.
 
@@ -24,7 +24,7 @@ SQL Server 2019 provides many new capabilities including:
 - Data Virtualization with Polybase and Big Data Clusters to reduce the need for data movement
 - Intelligent Performance to boost query performance with no application changes
 - Security enhancements such as Always Encrypted and Data Classification
-- Mission Critical Availability including Availability Groups on Kubernetes and Accelerated Database Recovery
+- Mission Critical Availability including enhancements for Availability Groups, built-in HA from Kubernetes and OpenShift, and Accelerated Database Recovery
 - Modern Development capabilities including Machine Learning Services and Extensibility with Java and the language of your choice
 - SQL Server on the platform of your choice with compatibility including Windows, Linux, Docker, Kubernetes, and Arm64 (Azure SQL Database Edge)
 
@@ -38,8 +38,7 @@ This **README.MD** file explains how the workshop is structured, what you will l
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/checkmark.png"> <h3>Learning Objectives</h3>
-<br>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>     Learning Objectives</b></h2>
 
 When you complete this course, you will be able to:
 
@@ -60,9 +59,9 @@ The following features in this lab also exist in Azure SQL Database:
 In addition, SQL Server Polybase allows you to connect to Azure SQL Database, Azure SQL Data Warehouse, and Azure CosmosDB.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/building1.png"> <h2>Business Applications of this Workshop</h2>
 
-<br>
+<h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/building1.png?raw=true"><b>     Business Applications of this Workshop</b></h2>
 
 - Boosting Database Performance with no application changes
 - Classifying data for industry or regulatory compliance
@@ -72,9 +71,7 @@ In addition, SQL Server Polybase allows you to connect to Azure SQL Database, Az
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/listcheck.png"> <h2>Technologies used in this Workshop</h2>
-
-<br>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/listcheck.png?raw=true"><b>     Technologies used in this Workshop</b></h2>
 
  <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 2px; border-color: gray;">
 
@@ -96,13 +93,11 @@ In addition, SQL Server Polybase allows you to connect to Azure SQL Database, Az
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/owl.png"> <h2>Before Taking this Workshop</h2>
-
-<br>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/owl.png?raw=true"><b>     Before Taking this Workshop</b></h2>
 
 To complete this workshop you will need the following:
 
-- Clone the workshop using git from https://github.com/microsoft/sqlworkshops.git. All the scripts and files in the labs are found in the **sql2019** folder.
+- Clone the workshop using git from https://github.com/microsoft/sqlworkshops.git. All the scripts and files in the labs are found in the **sql2019lab** folder.
 - On Windows systems, you should use the following git syntax
 
     `git clone --config core.autocrlf=false https://github.com/microsoft/sqlworkshops.git`
@@ -111,15 +106,16 @@ To complete this workshop you will need the following:
 
 Each module of this workshop can be studied and used independently of each other or taken all as a single lab. The Modules are designed in a sequence but you can use each of them one at a time at your own pace.
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/bulletlist.png"> 
-<h3>Setup</h3>
+<h3><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/bulletlist.png?raw=true"> 
+<b>     Setup</b></h3>
 
 In order to complete this workshop you need to install the following software:
 
-- SQL Server 2019 CTP 3.1 or later. You can run all of the activities from this workshop on an installed SQL Server on Windows, Linux, or Containers. You can use the client tools on a separate computer or VM provided it has access to connect to SQL Server.
+- SQL Server 2019 CTP 3.2 or later. You can run all of the activities from this workshop on an installed SQL Server on Windows, Linux, or Containers. You can use the client tools on a separate computer or VM provided it has access to connect to SQL Server.
     - For **Modules 1, 2, and 3** you only need the database engine installed
+    - **Module 3** requires disk space to hold a database with a 10Gb data and 10Gb log file.
     - **Module 4** requires you to install and enable Polybase (you don't need the Java option and you can choose a stand-alone Polybase.)
-- Install SQL Server Management Studio (SSMS) 18.1 or higher from https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms. Several of the modules require features built only into SSMS.
+- Install SQL Server Management Studio (SSMS) 18.2 or higher from https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms. Several of the modules require features built only into SSMS.
 - Install Azure Data Studio June 2019 or higher from https://docs.microsoft.com/en-us/sql/azure-data-studio/download. T-SQL notebooks are used extensively in this course.
 - **Docker is required only for Module 5**. You can use Docker for Windows, Linux, or MacOS.
 - The WideWorldImporters sample backup from https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak
@@ -127,11 +123,11 @@ In order to complete this workshop you need to install the following software:
 
 This workshop was built and designed for a server or VM to run SQL Server with at least 8Gb RAM and 4 CPUs. You may be able to run this lab with less compute resources.
 
-**NOTE**: *If you run this lab from a virtual machine in Azure running Windows, and you want to use Module 5, you will need to enable nested virtualization. Read more at https://docs.microsoft.com/en-us/azure/virtual-machines/windows/nested-virtualization*
+> **NOTE**: *If you run this lab from a virtual machine in Azure running Windows, and you want to use Module 5, you will need to enable nested virtualization. Read more at https://docs.microsoft.com/en-us/azure/virtual-machines/windows/nested-virtualization*
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/education1.png"> <h2>Workshop Details</h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/education1.png?raw=true"><b>     Workshop Details</b></h2>
 
 This workshop uses SQL Server 2019, SQL Server Management Studio, Azure Data Studio, Docker containers, and Azure SQL Database for you to learn how you can solve modern data challenges with SQL Server 2019.
 
@@ -147,21 +143,19 @@ This workshop uses SQL Server 2019, SQL Server Management Studio, Azure Data Stu
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/pinmap.png"> <h2>Related Workshops</h2><br>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pinmap.png?raw=true"><b>     Related Workshops</b></h2>
 
 - [Modernize your Database with SQL Server 2019](https://github.com/Microsoft/sqlworkshops/tree/master/ModernizeYourDatabases2019)
 - [SQL Server Big Data Clusters Architecture](https://github.com/microsoft/sqlworkshops/tree/master/sqlserver2019bigdataclusters)
 - [SQL Server 2019 on OpenShift](https://github.com/microsoft/sqlworkshops/tree/master/SQLonOpenShift)
 
-<br>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/bookpencil.png"> <h2>Workshop Modules</h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/bookpencil.png?raw=true"><b>     Workshop Modules</b></h2>
 
-This is a modular workshop, and in each section, you'll learn concepts, technologies, and processes to help you complete the solution. 
+This is a modular workshop, and in each section, you'll learn concepts, technologies, and processes to help you complete the solution. This table is provided for you to see the list of modules in the workshop. You can use any module in any order you like but the preferred method is to **proceed to Next Steps below to start the workshop.**
 
-**Proceed to Next Steps below to start the workhop.**
 <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 5px; border-color: gray;">
 
   <tr><td style="background-color: AliceBlue; color: black;"><b>Module</b></td><td style="background-color: AliceBlue; color: black;"><b>Topics</b></td></tr>
@@ -177,5 +171,7 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/geopin.png"><b>Next Steps</b></p>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/geopin.png?raw=true"><b>     Next Steps</b></h2>
+
 Next, Continue to <a href="./01_IntelligentPerformance.md" target="_blank"><i>Intelligent Performance</i></a>
+
